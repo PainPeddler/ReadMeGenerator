@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require(`inquirer`);
-const fs = require(`fs`);
-const gMD = require(`.utils/generateMarkdown`);
+const fs = require('fs');
+const gMD = require('.utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -25,6 +25,17 @@ const questions = [
         name: `description`,
         message: 'Enter a description for the project: '
     },
+    {
+        type: `list`,
+        name: 'license',
+        message:`Choose a license`,
+        choices: [
+            `MIT`,
+            `GPL`,
+            `None`
+        ]
+    },
+    
     {
         type: `input`,
         name: `liveLink`,
@@ -53,7 +64,9 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data);
+}
 
 // TODO: Create a function to initialize app
 function init() {
