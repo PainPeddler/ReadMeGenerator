@@ -22,13 +22,13 @@ function renderLicenseLink(license) {
     return "";
   }
   if (license === 'MIT'){
-    return "https://opensource.org/licenses/MIT";
+    return "(https://opensource.org/licenses/MIT)";
   }
   if (license === 'GPLv3'){
-    return "[https://www.gnu.org/licenses/gpl-3.0";
+    return "(https://www.gnu.org/licenses/gpl-3.0)";
   }
   if (license === 'Apache2.0'){
-    return "https://opensource.org/licenses/Apache-2.0)";
+    return "(https://opensource.org/licenses/Apache-2.0)";
   }
 }
 
@@ -39,10 +39,7 @@ function renderLicenseSection(license) {
     return "";
   }
   else {
-      return `## Licensing
-      ${renderLicenseBadge(license)}
-      ${renderLicenseLink(license)}
-      `;
+      return `${renderLicenseBadge(license)}${renderLicenseLink(license)}`;
   }
   
 }
@@ -52,30 +49,34 @@ function renderLicenseSection(license) {
 function generateMarkdown(data) {
   return `# ${data.title}
   
-  ##Table of Contents
+  ## Table of Contents
   
-  I   [Description](#description)
-  II  [License](#license)
-  III [Installation Instructions](#installation)
-  IV  [Usage Instructions](#instructions)
-  V   [Contribution Info](#contributions)
-  VI  [Tests](#tests)
-  VII [Questions](#questions)
+  ### I   [Description](#description)
+  ### II  [License](#license)
+  ### III [Installation Instructions](#installation)
+  ### IV  [Usage Instructions](#instructions)
+  ### V   [Contribution Info](#contributions)
+  ### VI  [Tests](#tests)
+  ### VII [Questions](#questions)
   
-  ##Description
+
+  ============================================================================================================
+  ## Description
   ${data.description}
-  ##License
-  ${data.license}
-  ##Installation
+  ## License
+  ${renderLicenseSection(data.license)}
+  ## Installation
   ${data.instructions}
-  ##Contributions
+  ## Instructions
+  ${data.usage}
+  ## Contributions
   ${data.contributions}
-  ##Tests
+  ## Tests
   ${data.testInfo}
-  ##Questions
-  Contacts
-  Github: ${data.gitUsername}
-  E-mail: ${data.eMail}
+  ## Questions
+  If you have questions feel free to contact at:
+  - Github: ${data.gitUsername}
+  - E-mail: ${data.eMail}
   ` ;
 
 

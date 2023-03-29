@@ -55,7 +55,7 @@ const questions = [
     {
         type: `input`,
         name: `contributions`,
-        message: 'State guideliens for contributions to your project: '
+        message: 'State guidelines for contributions to your project: '
     },
     {
         type: `input`,
